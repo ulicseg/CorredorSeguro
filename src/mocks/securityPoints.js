@@ -7,14 +7,14 @@ export const SECURITY_POINTS = [
     name: 'UTN FRRe',
     coordinates: [-27.45105623091541, -58.979113507104366], // [Lat, Lon] para Leaflet
     type: 'university',
-    color: '#00FFFF'
+    color: '#64748b'
   },
   {
     id: 'unne',
     name: 'UNNE Campus',
     coordinates: [-27.463759265046846, -58.98493279224318],
     type: 'university',
-    color: '#00FFFF'
+    color: '#64748b'
   },
 
   // Nodos de seguridad policiales oficiales

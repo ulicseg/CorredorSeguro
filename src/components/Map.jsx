@@ -131,7 +131,7 @@ export function Map() {
           <Marker
             key={point.id}
             position={point.coordinates}
-            icon={createCustomIcon('#38bdf8', 'C')}
+            icon={createCustomIcon('#64748b', 'C')}
           >
             <Popup>
               <div className="font-semibold text-sm">
@@ -177,7 +177,7 @@ export function Map() {
         <button
           type="button"
           onClick={() => setIsSheetOpen(true)}
-          className="pointer-events-auto inline-flex h-10 items-center gap-2 rounded-full border border-cyan-400/30 bg-slate-950/90 px-3 text-[11px] font-medium text-cyan-200 shadow-lg shadow-cyan-500/10 backdrop-blur-md transition hover:bg-slate-900"
+          className="pointer-events-auto inline-flex h-10 items-center gap-2 rounded-full border border-slate-600/40 bg-slate-950/90 px-3 text-[11px] font-medium text-slate-300 shadow-lg shadow-slate-900/15 backdrop-blur-md transition hover:bg-slate-900"
         >
           Destinos
         </button>

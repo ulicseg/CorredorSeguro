@@ -25,7 +25,7 @@ export function DestinationSheet({ isOpen, onSelectDestination, onClose }) {
           <div className="mx-auto mb-4 h-1.5 w-14 rounded-full bg-white/20" />
           <div className="flex items-start justify-between gap-4">
             <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-cyan-300/80">Corredor seguro</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Corredor seguro</p>
               <h2 className="mt-2 text-xl font-semibold text-white">Elegí tu destino</h2>
               <p className="mt-1 text-sm text-slate-400">OSRM trazará una ruta real por las calles de Resistencia.</p>
             </div>
@@ -46,16 +46,16 @@ export function DestinationSheet({ isOpen, onSelectDestination, onClose }) {
               type="button"
               whileTap={{ scale: 0.98 }}
               onClick={() => onSelectDestination(destination)}
-              className="group flex w-full items-center gap-4 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-left transition hover:border-cyan-400/40 hover:bg-cyan-400/10"
+              className="group flex w-full items-center gap-4 rounded-2xl border border-slate-700/30 bg-white/5 px-4 py-4 text-left transition hover:border-slate-600/60 hover:bg-slate-700/15"
             >
-              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-cyan-400/15 text-cyan-300 ring-1 ring-cyan-400/20">
+              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-700/20 text-slate-300 ring-1 ring-slate-700/30">
                 <Route size={20} />
               </span>
               <span className="min-w-0 flex-1">
                 <span className="block text-base font-semibold text-white">{destination.name}</span>
                 <span className="mt-1 block text-sm text-slate-400">{destination.subtitle}</span>
               </span>
-              <MapPin size={18} className="text-cyan-300 transition group-hover:translate-x-0.5" />
+              <MapPin size={18} className="text-slate-300 transition group-hover:translate-x-0.5" />
             </motion.button>
           ))}
         </div>

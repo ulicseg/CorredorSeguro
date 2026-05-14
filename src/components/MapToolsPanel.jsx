@@ -11,7 +11,7 @@ export function MapToolsPanel({ selectedStartPointId, onSelectStartPoint }) {
       <button
         type="button"
         onClick={() => setIsOpen((value) => !value)}
-        className="pointer-events-auto inline-flex h-10 items-center gap-2 rounded-full border border-cyan-400/30 bg-slate-950/90 px-3 text-[11px] font-medium text-cyan-200 shadow-lg shadow-cyan-500/10 backdrop-blur-md transition hover:bg-slate-900"
+        className="pointer-events-auto inline-flex h-10 items-center gap-2 rounded-full border border-slate-600/40 bg-slate-950/90 px-3 text-[11px] font-medium text-slate-300 shadow-lg shadow-slate-900/15 backdrop-blur-md transition hover:bg-slate-900"
         aria-expanded={isOpen}
         aria-label="Abrir controles del mapa"
       >
