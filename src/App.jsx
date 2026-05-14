@@ -5,7 +5,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className="w-full h-screen bg-gray-900 dark">
+    <div className="w-full h-screen bg-zinc-900 dark">
       <Map />
       <SOSEmergency />
     </div>

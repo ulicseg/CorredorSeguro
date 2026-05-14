@@ -11,7 +11,7 @@ export function MapToolsPanel({ selectedStartPointId, onSelectStartPoint }) {
       <button
         type="button"
         onClick={() => setIsOpen((value) => !value)}
-        className="pointer-events-auto inline-flex h-10 items-center gap-2 rounded-full border border-slate-600/40 bg-slate-950/90 px-3 text-[11px] font-medium text-slate-300 shadow-lg shadow-slate-900/15 backdrop-blur-md transition hover:bg-slate-900"
+        className="pointer-events-auto inline-flex h-10 items-center gap-2 rounded-full border border-zinc-700/40 bg-zinc-950 px-3 text-[11px] font-medium text-zinc-300 shadow-lg shadow-zinc-900/15 backdrop-blur-md transition hover:bg-zinc-900"
         aria-expanded={isOpen}
         aria-label="Abrir controles del mapa"
       >
@@ -21,7 +21,7 @@ export function MapToolsPanel({ selectedStartPointId, onSelectStartPoint }) {
       </button>
 
       {isOpen && (
-        <div className="pointer-events-auto flex w-[15rem] max-w-[calc(100vw-1.5rem)] flex-col gap-2 rounded-2xl border border-white/10 bg-slate-950/95 p-2 shadow-2xl backdrop-blur-md sm:w-[16rem]">
+        <div className="pointer-events-auto flex w-[15rem] max-w-[calc(100vw-1.5rem)] flex-col gap-2 rounded-2xl border border-white/10 bg-zinc-900 p-2 shadow-2xl backdrop-blur-md sm:w-[16rem]">
           <div className="flex items-center justify-between gap-2 px-1 pt-0.5">
             <p className="text-[10px] uppercase tracking-[0.22em] text-slate-200/85">Mapa</p>
             <button

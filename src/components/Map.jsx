@@ -177,7 +177,7 @@ export function Map() {
         <button
           type="button"
           onClick={() => setIsSheetOpen(true)}
-          className="pointer-events-auto inline-flex h-10 items-center gap-2 rounded-full border border-slate-600/40 bg-slate-950/90 px-3 text-[11px] font-medium text-slate-300 shadow-lg shadow-slate-900/15 backdrop-blur-md transition hover:bg-slate-900"
+          className="pointer-events-auto inline-flex h-10 items-center gap-2 rounded-full border border-zinc-700/40 bg-zinc-950 px-3 text-[11px] font-medium text-zinc-300 shadow-lg shadow-zinc-900/15 backdrop-blur-md transition hover:bg-zinc-900"
         >
           Destinos
         </button>
@@ -185,7 +185,7 @@ export function Map() {
 
       <div className="pointer-events-none absolute right-4 top-16 z-[900] flex flex-col gap-3">
         {loading && (
-          <div className="rounded-full border border-white/10 bg-slate-950/90 px-4 py-2 text-sm text-slate-200 shadow-lg backdrop-blur-md">
+          <div className="rounded-full border border-white/10 bg-zinc-900 px-4 py-2 text-sm text-zinc-200 shadow-lg backdrop-blur-md">
             Calculando ruta con OSRM...
           </div>
         )}
