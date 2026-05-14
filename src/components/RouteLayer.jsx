@@ -22,8 +22,8 @@ export function RouteLayer({ routeGeometry }) {
       data={routeGeometry}
       style={{
         color: '#7BC850',
-        weight: 5,
-        opacity: 0.65,
+        weight: 7,
+        opacity: 0.9,
         lineCap: 'round',
         lineJoin: 'round',
         dashArray: '10, 5',
