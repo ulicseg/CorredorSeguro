@@ -1,6 +1,6 @@
 const LEGEND_ITEMS = [
   { id: 'university', label: 'Universidad', color: '#64748b', text: 'U' },
-  { id: 'police', label: 'Comisaría', color: '#00FF00', text: 'P' },
+  { id: 'police', label: 'Comisaría', color: '#0055FF', text: 'P' },
   { id: 'start', label: 'Salida', color: '#f97316', text: 'S' },
   { id: 'camera', label: 'Cámara', color: '#64748b', text: 'C' },
   { id: 'sos', label: 'SOS', color: '#ef4444', text: 'SOS' },

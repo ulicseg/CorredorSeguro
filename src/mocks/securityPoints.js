@@ -23,105 +23,105 @@ export const SECURITY_POINTS = [
     name: 'POLICIA-DDI-RESISTENCIA',
     coordinates: [-27.45556803866831, -58.98323417209615],
     type: 'police',
-    color: '#00FF00'
+    color: '#0055FF'
   },
   {
     id: 'comisaria_primera_resistencia',
     name: 'COMISARIA PRIMERA RESISTENCIA',
     coordinates: [-27.460099671490596, -58.9795649101921],
     type: 'police',
-    color: '#00FF00'
+    color: '#0055FF'
   },
   {
     id: 'comisaria_mujer',
     name: 'Comisaria de la mujer',
     coordinates: [-27.456308265987754, -58.99448666181105],
     type: 'police',
-    color: '#00FF00'
+    color: '#0055FF'
   },
   {
     id: 'comisaria_tercera',
     name: 'Comisaria Tercera',
     coordinates: [-27.456267874477067, -58.99415665202352],
     type: 'police',
-    color: '#00FF00'
+    color: '#0055FF'
   },
   {
     id: 'comisaria_segunda_resistencia',
     name: 'COMISARIA SEGUNDA RESISTENCIA',
     coordinates: [-27.4451411474283, -58.98439323887247],
     type: 'police',
-    color: '#00FF00'
+    color: '#0055FF'
   },
   {
     id: 'comisaria_7ma',
     name: 'Comisaria 7ma',
     coordinates: [-27.472167625986433, -58.991285922763],
     type: 'police',
-    color: '#00FF00'
+    color: '#0055FF'
   },
   {
     id: 'comisaria_octava',
     name: 'Comisaria Octava',
     coordinates: [-27.450201110735403, -58.96465345431407],
     type: 'police',
-    color: '#00FF00'
+    color: '#0055FF'
   },
   {
     id: 'policia_12ma_metropolitana',
     name: 'Policia del Chaco Cria. 12ma. Metropolitana',
     coordinates: [-27.437326571316266, -58.97381964252451],
     type: 'police',
-    color: '#00FF00'
+    color: '#0055FF'
   },
   {
     id: 'jefatura_chaco',
     name: 'Jefatura de Policia del Chaco',
     coordinates: [-27.438671742706457, -58.999441665958],
     type: 'police',
-    color: '#00FF00'
+    color: '#0055FF'
   },
   {
     id: 'comisaria_undecima_resistencia',
     name: 'Comisaria Undecima Resistencia',
     coordinates: [-27.44623001999957, -59.01546445198217],
     type: 'police',
-    color: '#00FF00'
+    color: '#0055FF'
   },
   {
     id: 'comisaria_cuarta_resistencia',
     name: 'COMISARIA CUARTA RESISTENCIA',
     coordinates: [-27.450713499128817, -59.01524792878024],
     type: 'police',
-    color: '#00FF00'
+    color: '#0055FF'
   },
   {
     id: 'comisaria_6',
     name: 'Comisaria 6',
     coordinates: [-27.458719258535847, -59.01791839306202],
     type: 'police',
-    color: '#00FF00'
+    color: '#0055FF'
   },
   {
     id: 'pfa_duof_resistencia',
     name: 'Policia Federal Argentina DUOF Resistencia',
     coordinates: [-27.455705248440744, -58.98524790940902],
     type: 'police',
-    color: '#00FF00'
+    color: '#0055FF'
   },
   {
     id: 'policia_comisaria_numero_1',
     name: 'Policia Comisaria Numero 1',
     coordinates: [-27.46028216640169, -58.97946968160145],
     type: 'police',
-    color: '#00FF00'
+    color: '#0055FF'
   },
   {
     id: 'gendarmeria_region_viii',
     name: 'Gendarmeria Nacional - Region VIII (Chaco-Formosa)',
     coordinates: [-27.446984629774576, -58.99190786333293],
     type: 'police',
-    color: '#00FF00'
+    color: '#0055FF'
   }
 ];
 
