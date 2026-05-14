@@ -24,6 +24,56 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.leaflet-control-container .leaflet-top.leaflet-left {
+  top: 76px;
+  left: auto;
+  right: 12px;
+}
+
+.leaflet-control-zoom.leaflet-bar {
+  border: 1px solid rgba(34, 211, 238, 0.22);
+  border-radius: 9999px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.45);
+  backdrop-filter: blur(12px);
+}
+
+.leaflet-bar a,
+.leaflet-bar a:hover {
+  background-color: rgba(2, 6, 23, 0.92);
+  color: #67e8f9;
+  border-bottom: 1px solid rgba(34, 211, 238, 0.18);
+}
+
+.leaflet-bar a:hover {
+  background-color: rgba(8, 15, 35, 0.98);
+  color: #a5f3fc;
+}
+
+.leaflet-bar a:last-child {
+  border-bottom: none;
+}
+
+.leaflet-touch .leaflet-bar a {
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+}
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+  font: bold 18px 'Segoe UI', sans-serif;
+  text-indent: 0;
+}
+
+@media (max-width: 640px) {
+  .leaflet-control-container .leaflet-top.leaflet-left {
+    top: 68px;
+    left: auto;
+    right: 12px;
+  }
+}
+
 .custom-marker {
   background: none !important;
   border: none !important;

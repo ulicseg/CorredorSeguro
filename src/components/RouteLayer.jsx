@@ -5,8 +5,11 @@ export function RouteLayer({ routeGeometry }) {
     return null;
   }
 
+  const routeKey = JSON.stringify(routeGeometry.coordinates ?? routeGeometry);
+
   return (
     <GeoJSON
+      key={routeKey}
       data={routeGeometry}
       style={{
         color: '#00ffff',

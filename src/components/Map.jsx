@@ -14,8 +14,7 @@ import { DestinationSheet } from './DestinationSheet';
 import { RouteLayer } from './RouteLayer';
 import { MapBoundsController } from './MapBoundsController';
 import { useRoute } from '../hooks/useRoute';
-import { StartPointSelector } from './StartPointSelector';
-import { MapLegend } from './MapLegend';
+import { MapToolsPanel } from './MapToolsPanel';
 import { buildRouteCameraPoints, policeAlongRoute } from '../utils/routeSafety';
 
 // Solucionar iconos de Leaflet
@@ -169,22 +168,22 @@ export function Map() {
         <RouteLayer routeGeometry={routeGeometry} />
       </MapContainer>
 
-      <div className="pointer-events-none absolute left-4 top-4 z-[900] flex flex-col gap-3">
+      <MapToolsPanel
+        selectedStartPointId={selectedStartPoint?.id}
+        onSelectStartPoint={setSelectedStartPoint}
+      />
+
+      <div className="pointer-events-none absolute left-3 top-16 z-[900]">
         <button
           type="button"
           onClick={() => setIsSheetOpen(true)}
-          className="pointer-events-auto rounded-full border border-cyan-400/30 bg-slate-950/90 px-4 py-2 text-sm font-medium text-cyan-200 shadow-lg shadow-cyan-500/10 backdrop-blur-md transition hover:bg-slate-900"
+          className="pointer-events-auto inline-flex h-10 items-center gap-2 rounded-full border border-cyan-400/30 bg-slate-950/90 px-3 text-[11px] font-medium text-cyan-200 shadow-lg shadow-cyan-500/10 backdrop-blur-md transition hover:bg-slate-900"
         >
           Destinos
         </button>
+      </div>
 
-        <StartPointSelector
-          selectedStartPointId={selectedStartPoint?.id}
-          onSelectStartPoint={setSelectedStartPoint}
-        />
-
-        <MapLegend />
-
+      <div className="pointer-events-none absolute right-4 top-16 z-[900] flex flex-col gap-3">
         {loading && (
           <div className="rounded-full border border-white/10 bg-slate-950/90 px-4 py-2 text-sm text-slate-200 shadow-lg backdrop-blur-md">
             Calculando ruta con OSRM...

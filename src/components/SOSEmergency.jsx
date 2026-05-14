@@ -13,9 +13,9 @@ export function SOSEmergency() {
         onClick={() => setIsOpen(true)}
         animate={{ scale: [1, 1.08, 1] }}
         transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
-        className="fixed bottom-5 right-5 z-[1100] flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-rose-500 via-red-600 to-red-800 text-white shadow-[0_0_30px_rgba(244,63,94,0.45)] ring-4 ring-rose-400/20"
+        className="fixed right-4 top-4 z-[1100] flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-rose-500 via-red-600 to-red-800 text-white shadow-[0_0_18px_rgba(244,63,94,0.35)] ring-2 ring-rose-400/20 md:h-14 md:w-14"
       >
-        <ShieldAlert size={34} strokeWidth={2.2} />
+        <ShieldAlert size={20} strokeWidth={2.2} />
       </motion.button>
 
       <AnimatePresence>
