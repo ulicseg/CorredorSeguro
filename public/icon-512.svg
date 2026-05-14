@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Corredor Seguro">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#g)"/>
+  <circle cx="256" cy="256" r="146" fill="none" stroke="#22d3ee" stroke-width="24" stroke-opacity="0.28"/>
+  <circle cx="256" cy="256" r="54" fill="#22d3ee"/>
+  <path d="M256 92L353 189L256 256L159 189Z" fill="#34d399" opacity="0.95"/>
+  <path d="M256 420L159 323L256 256L353 323Z" fill="#f43f5e" opacity="0.9"/>
+</svg>
