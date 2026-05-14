@@ -87,3 +87,28 @@ html, body {
     opacity: 0.5;
   }
 }
+
+@keyframes routeBreathe {
+  0%, 100% {
+    stroke-opacity: 0.65;
+  }
+  50% {
+    stroke-opacity: 0.85;
+  }
+}
+
+@keyframes routeFlow {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -15;
+  }
+}
+
+/* Aplicar animaciones a la línea de ruta */
+.leaflet-pane svg path[stroke="#7BC850"] {
+  animation: routeBreathe 3s ease-in-out infinite, routeFlow 2s linear infinite;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

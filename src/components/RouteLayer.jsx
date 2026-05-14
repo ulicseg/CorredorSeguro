@@ -7,15 +7,28 @@ export function RouteLayer({ routeGeometry }) {
 
   const routeKey = JSON.stringify(routeGeometry.coordinates ?? routeGeometry);
 
+  const onEachFeature = (feature, layer) => {
+    // Aplicar clase para animación
+    if (layer.setStyle) {
+      layer.setStyle({
+        className: 'animated-route-line',
+      });
+    }
+  };
+
   return (
     <GeoJSON
       key={routeKey}
       data={routeGeometry}
       style={{
-        color: '#00ffff',
-        weight: 6,
-        opacity: 0.95,
+        color: '#7BC850',
+        weight: 5,
+        opacity: 0.65,
+        lineCap: 'round',
+        lineJoin: 'round',
+        dashArray: '10, 5',
       }}
+      onEachFeature={onEachFeature}
     />
   );
 }
