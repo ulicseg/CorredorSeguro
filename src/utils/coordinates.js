@@ -15,6 +15,6 @@ export function buildOsrmRouteUrl(origin, destination, waypoints = [], options =
     })
     .join(';');
 
-  // Perfil foot para ruteo peatonal: no depende de reglas vehiculares de mano/contramano.
+  // Usamos 'foot' para evitar que OSRM se sienta atraido a las grandes avenidas de trafico vehicular.
   return `https://router.project-osrm.org/route/v1/foot/${routePoints}?geometries=geojson&overview=full&alternatives=${alternatives ? 'true' : 'false'}&steps=false`;
 }

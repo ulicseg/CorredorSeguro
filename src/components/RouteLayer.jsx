@@ -5,10 +5,14 @@ export function RouteLayer({ routeGeometry }) {
     return null;
   }
 
-  const routeKey = JSON.stringify(routeGeometry.coordinates ?? routeGeometry);
+  // react-leaflet GeoJSON espera un Feature/FeatureCollection, no una geometría cruda
+  const geoData = routeGeometry.type === 'LineString'
+    ? { type: 'Feature', geometry: routeGeometry, properties: {} }
+    : routeGeometry;
+
+  const routeKey = JSON.stringify(geoData.geometry?.coordinates ?? geoData.coordinates ?? geoData);
 
   const onEachFeature = (feature, layer) => {
-    // Aplicar clase para animación
     if (layer.setStyle) {
       layer.setStyle({
         className: 'animated-route-line',
@@ -19,7 +23,7 @@ export function RouteLayer({ routeGeometry }) {
   return (
     <GeoJSON
       key={routeKey}
-      data={routeGeometry}
+      data={geoData}
       style={{
         color: '#7BC850',
         weight: 7,

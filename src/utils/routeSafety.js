@@ -225,56 +225,84 @@ export function buildRouteCameraPoints(routeGeometry) {
     return [];
   }
 
-  const seed = routeGeometry.coordinates.length + Math.round(totalLength);
-  const cameraCount = seededRandom(seed * 1.97) > 0.5 ? 5 : 4;
-  const targetDistances = [];
-  const minGap = totalLength / (cameraCount + 2.5);
-
-  for (let i = 0; i < cameraCount; i += 1) {
-    let attempts = 0;
-    let candidate = 0;
-
-    do {
-      const randomFactor = seededRandom(seed * (i + 2.17 + attempts));
-      candidate = totalLength * (0.08 + randomFactor * 0.84);
-      attempts += 1;
-    } while (
-      attempts < 12
-      && targetDistances.some((distance) => Math.abs(distance - candidate) < minGap)
-    );
-
-    targetDistances.push(candidate);
-  }
-
-  targetDistances.sort((a, b) => a - b);
-
   const points = [];
-  let accumulated = 0;
-  let targetIndex = 0;
+  const distanceBetweenCameras = 300; // 300 metros = aprox 3 cuadras
+
+  let accumulatedLength = 0;
+  let nextCameraTarget = distanceBetweenCameras;
 
   for (let i = 1; i < routeLatLon.length; i += 1) {
-    if (targetIndex >= targetDistances.length) {
-      break;
-    }
-
     const prev = routeLatLon[i - 1];
     const next = routeLatLon[i];
     const segmentLength = distanceMeters(prev, next);
 
-    while (targetIndex < targetDistances.length && accumulated + segmentLength >= targetDistances[targetIndex]) {
-      const remaining = targetDistances[targetIndex] - accumulated;
+    while (accumulatedLength + segmentLength >= nextCameraTarget) {
+      const remaining = nextCameraTarget - accumulatedLength;
       const ratio = segmentLength === 0 ? 0 : remaining / segmentLength;
       const coordinate = interpolatePoint(prev, next, ratio);
+      
       points.push({
         id: `camera_${points.length + 1}`,
         type: 'camera',
         coordinates: coordinate,
       });
-      targetIndex += 1;
+
+      nextCameraTarget += distanceBetweenCameras;
     }
 
-    accumulated += segmentLength;
+    accumulatedLength += segmentLength;
   }
 
   return points;
+}
+
+export function evaluateAvenues(routeGeometry, avenuesData) {
+  if (!routeGeometry?.coordinates?.length || !avenuesData) return 0;
+  let overlapMeters = 0;
+  const routeLatLon = routeGeometry.coordinates.map(([lon, lat]) => [lat, lon]);
+
+  for (const avenueName of Object.keys(avenuesData)) {
+    const avenuePoints = avenuesData[avenueName];
+    for (let i = 1; i < routeLatLon.length; i++) {
+      const p1 = routeLatLon[i-1];
+      const p2 = routeLatLon[i];
+      const segmentLen = distanceMeters(p1, p2);
+      
+      let p1Near = false;
+      let p2Near = false;
+      
+      for (let j = 1; j < avenuePoints.length; j++) {
+        if (!p1Near && pointToSegmentDistanceMeters(p1, avenuePoints[j-1], avenuePoints[j]) <= 40) p1Near = true;
+        if (!p2Near && pointToSegmentDistanceMeters(p2, avenuePoints[j-1], avenuePoints[j]) <= 40) p2Near = true;
+        if (p1Near && p2Near) break;
+      }
+      
+      if (p1Near && p2Near) {
+        overlapMeters += segmentLen;
+      } else if (p1Near || p2Near) {
+        overlapMeters += Math.min(segmentLen / 2, 40);
+      }
+    }
+  }
+  return overlapMeters;
+}
+
+export function avenuePriorityWaypoints(origin, destination, avenuesData, maxDetourMeters = 2000) {
+  if (!origin || !destination || !avenuesData) return [];
+  const candidates = [];
+  for (const avenueName of Object.keys(avenuesData)) {
+    const avenuePoints = avenuesData[avenueName];
+    const step = Math.max(1, Math.floor(avenuePoints.length / 4));
+    for (let i = 0; i < avenuePoints.length; i += step) {
+       const point = avenuePoints[i];
+       const info = segmentProjectionInfo(point, origin, destination);
+       if (info.distance <= maxDetourMeters && info.t >= 0.1 && info.t <= 0.9) {
+          candidates.push(point);
+       }
+    }
+  }
+  candidates.sort((a,b) => {
+     return segmentProjectionInfo(a, origin, destination).distance - segmentProjectionInfo(b, origin, destination).distance;
+  });
+  return candidates.slice(0, 4);
 }
