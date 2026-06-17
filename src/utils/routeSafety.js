@@ -159,7 +159,19 @@ export function policePriorityWaypoints(routeGeometry, policePoints, thresholdMe
       return a.distance - b.distance;
     })
     .slice(0, maxWaypoints)
-    .map((item) => item.point.coordinates);
+    .map((item) => {
+      // Proyectar la posición del policía sobre la geometría de la ruta
+      const segIndex = Math.max(1, Math.min(routeLatLon.length - 1, item.segment));
+      const start = routeLatLon[segIndex - 1];
+      const end = routeLatLon[segIndex];
+      const t = item.ratio;
+
+      const projLat = start[0] + (end[0] - start[0]) * t;
+      const projLon = start[1] + (end[1] - start[1]) * t;
+
+      // Devolver en formato [lat, lon] como el resto de puntos del sistema
+      return [projLat, projLon];
+    });
 }
 
 export function forwardPoliceCandidates(origin, destination, policePoints, thresholdMeters = 240, maxCandidates = 6) {

@@ -29,17 +29,19 @@ export function Map() {
   const [isSheetOpen, setIsSheetOpen] = useState(true);
   const [selectedDestination, setSelectedDestination] = useState(null);
   const [selectedStartPoint, setSelectedStartPoint] = useState(DEFAULT_START_POINT);
+  const [preferPolice, setPreferPolice] = useState(true);
 
   const policePoints = useMemo(
     () => SECURITY_POINTS.filter((point) => point.type === 'police'),
     [],
   );
   const routeOrigin = selectedStartPoint?.coordinates ?? RESISTENCIA_CENTER;
-  const { route, loading, error } = useRoute(
+  const { route, loading, error, usedWaypoints, debugCandidates } = useRoute(
     routeOrigin,
     selectedDestination?.coordinates ?? null,
     policePoints,
     SOS_POINTS,
+    preferPolice,
   );
   const routeGeometry = useMemo(() => route, [route]);
   const policeNearRoute = useMemo(
@@ -165,8 +167,51 @@ export function Map() {
           </Marker>
         ))}
 
+        {/* Debug: mostrar waypoints usados para candidatos vía (si existen) */}
+        {usedWaypoints?.map((wp, idx) => (
+          <Marker
+            key={`debug-wp-${idx}`}
+            position={wp}
+            icon={createCustomIcon('#fb923c', 'WP')}
+          >
+            <Popup>
+              <div className="font-semibold text-sm">
+                <p className="font-bold">Waypoint forzado</p>
+                <p className="text-xs text-gray-400">{wp[0].toFixed(6)}, {wp[1].toFixed(6)}</p>
+              </div>
+            </Popup>
+          </Marker>
+        ))}
+
         <RouteLayer routeGeometry={routeGeometry} />
       </MapContainer>
+
+      {/* Toggle preferencia por comisarías */}
+      <div className="pointer-events-auto absolute left-4 top-4 z-[999]">
+        <button
+          type="button"
+          onClick={() => setPreferPolice((s) => !s)}
+          className="rounded-md bg-zinc-900/80 px-3 py-1 text-xs text-zinc-200"
+        >
+          {preferPolice ? 'Priorizar comisarías: ON' : 'Priorizar comisarías: OFF'}
+        </button>
+      </div>
+
+      {/* Panel debug de candidatos (solo para QA) */}
+      {debugCandidates && debugCandidates.length > 0 && (
+        <div className="pointer-events-auto absolute left-4 top-4 z-[999] w-64 rounded-lg bg-zinc-900/80 p-3 text-xs text-zinc-200 backdrop-blur-md">
+          <div className="font-semibold mb-1">Candidatos (depuración)</div>
+          <div className="max-h-40 overflow-auto">
+            {debugCandidates.map((c, i) => (
+              <div key={i} className="flex justify-between border-b border-zinc-800 py-1">
+                <div>{c.viaWaypoint ? 'Via' : 'Base'}</div>
+                <div>{Math.round(c.distance)}m</div>
+                <div>{c.policeCount} P</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       <MapToolsPanel
         selectedStartPointId={selectedStartPoint?.id}
